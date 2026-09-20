@@ -54,7 +54,15 @@ Reload the `systemd` configuration:
 systemctl daemon-reload
 ```
 
-Check if the services are running, if not use the `systemctl start <service-id>` command:
+Start and enable the services, this will make them automatically start at boot time:
+```sh
+systemctl start power-control
+systemctl enable power-control
+systemctl start pwm-fan-control
+systemctl enable pwm-fan-control
+```
+
+Check if the services are running:
 ```sh
 systemctl status power-control
 systemctl status pwm-fan-control
