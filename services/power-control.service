@@ -1,0 +1,13 @@
+[Unit]
+Description=Enable soft reboot and shutdown of the server
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/geekworm-scripts.conf
+ExecStart=/bin/bash -c "$GEEKWORM_SCRIPTS_PATH/power_control"
+Type=simple
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

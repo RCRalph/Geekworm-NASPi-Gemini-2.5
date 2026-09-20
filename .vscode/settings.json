@@ -1,0 +1,20 @@
+{
+    "cSpell.words": [
+        "GEEKWORM",
+        "wiringpi"
+    ],
+    "C_Cpp.default.compilerPath": "/usr/bin/arm-linux-gnueabihf-gcc",
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0, BinPackArguments: false, BreakBeforeClosingBracket: Always}",
+    "files.associations": {
+        "stdio.h": "c",
+        "wiringpi.h": "c",
+        "cyclic_buffer.h": "c",
+        "unistd.h": "c",
+        "math.h": "c",
+        "circular_buffer.h": "c",
+        "signal.h": "c",
+        "reboot.h": "c",
+        "time.h": "c"
+    },
+    "makefile.configureOnOpen": true
+}

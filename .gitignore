@@ -1,0 +1,6 @@
+# This setup ignores all files without extensions, which in this repository are executable files
+*
+!*.*
+!*/
+!Makefile
+!LICENSE
