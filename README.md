@@ -43,11 +43,6 @@ Compile all programs using the following command:
 make all
 ```
 
-Link the config file to `/etc/geekworm-scripts.conf` file to set the environment variables for `systemctl` services. Editing the file might be required if the repository was clone to a directory other than `/opt`:
-```sh
-ln -s /opt/Geekworm-NASPi-Gemini-2.5/services/geekworm-scripts.conf /etc/geekworm-scripts.conf
-``` 
-
 Link the `systemctl` service files, so the executables start their operation at boot time:
 ```sh
 ln -s /opt/Geekworm-NASPi-Gemini-2.5/services/power-control.service /etc/systemd/system/power-control.service

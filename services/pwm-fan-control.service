@@ -3,8 +3,7 @@ Description=Modulate PWM fan speed
 After=network.target
 
 [Service]
-EnvironmentFile=/etc/geekworm-scripts.conf
-ExecStart=/bin/bash -c "$GEEKWORM_SCRIPTS_PATH/pwm_fan_control"
+ExecStart=/opt/Geekworm-NASPi-Gemini-2.5/pwm_fan_control
 Type=simple
 Restart=always
 RestartSec=10
