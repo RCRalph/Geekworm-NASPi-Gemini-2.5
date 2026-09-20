@@ -1,6 +1,4 @@
-# This setup ignores all files without extensions, which in this repository are executable files
-*
-!*.*
-!*/
-!Makefile
-!LICENSE
+pwm_fan_control
+power_control
+soft_reboot
+soft_shutdown

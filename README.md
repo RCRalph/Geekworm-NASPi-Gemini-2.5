@@ -35,7 +35,7 @@ To build the executables, you need to complete the following setup tasks. This l
 
 After all above tasks have been completed, please navigate to the source code:
 ```sh
-cd /opt
+cd /opt/Geekworm-NASPi-Gemini-2.5
 ```
 
 Compile all programs using the following command:
@@ -45,13 +45,13 @@ make all
 
 Link the config file to `/etc/geekworm-scripts.conf` file to set the environment variables for `systemctl` services. Editing the file might be required if the repository was clone to a directory other than `/opt`:
 ```sh
-ln -s "$PWD/services/geekworm-scripts.conf" /etc/geekworm-scripts.conf
+ln -s /opt/Geekworm-NASPi-Gemini-2.5/services/geekworm-scripts.conf /etc/geekworm-scripts.conf
 ``` 
 
 Link the `systemctl` service files, so the executables start their operation at boot time:
 ```sh
-ln -s "$PWD/services/power-control.service" /etc/systemd/system/power-control.service
-ln -s "$PWD/services/pwm-fan-control.service" /etc/systemd/system/pwm-fan-control.service
+ln -s /opt/Geekworm-NASPi-Gemini-2.5/services/power-control.service /etc/systemd/system/power-control.service
+ln -s /opt/Geekworm-NASPi-Gemini-2.5/services/pwm-fan-control.service /etc/systemd/system/pwm-fan-control.service
 ```
 
 Reload the `systemd` configuration:
@@ -80,5 +80,5 @@ The power control service is responsible for performing reboots or soft shutdown
 | 0.6 - 8.0             | Soft shutdown                        |
 | 8+                    | Hard shutdown (handled by the board) |
 
-## Soft shutdown
-The soft shutdown executable simulates the button press for duration required to shutdown the server. You can run it manually by running `./soft_shutdown` or by adding the repository directory to the `PATH` variable and running `soft_shutdown` command.
+## Soft reboot and soft shutdown
+The soft reboot and soft shutdown executables simulate the button press for duration required to reboot or shutdown the server. You can run it manually by running `./soft_reboot` or `./soft_shutdown` in the terminal or by adding the repository directory to the `PATH` variable and running `soft_reboot` and `soft_shutdown` command.
