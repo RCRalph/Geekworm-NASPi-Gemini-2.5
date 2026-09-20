@@ -10,10 +10,10 @@ power_control: power_control.c
 	$(CC) $(CFLAGS) power_control.c -o power_control -lwiringPi
 
 soft_reboot: soft_reboot.c
-	$(CC) $(CFLAGS) soft_reboot.c -o soft_reboot -lwiringPi -D SLEEP_TIME=400000
+	$(CC) $(CFLAGS) soft_reboot.c -o soft_reboot -lwiringPi -DSLEEP_TIME=400000
 
 soft_shutdown: soft_reboot.c
-	$(CC) $(CFLAGS) soft_reboot.c -o soft_shutdown -lwiringPi -D SLEEP_TIME=2000000
+	$(CC) $(CFLAGS) soft_reboot.c -o soft_shutdown -lwiringPi -DSLEEP_TIME=2000000
 
 .PHONY: clean
 clean:
