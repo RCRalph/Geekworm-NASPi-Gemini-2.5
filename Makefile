@@ -4,7 +4,7 @@ CFLAGS = -Wall -std=gnu2x -O2
 all: pwm_fan_control power_control soft_reboot soft_shutdown
 
 pwm_fan_control: pwm_fan_control.c circular_buffer.c
-	$(CC) $(CFLAGS) pwm_fan_control.c circular_buffer.c -o pwm_fan_control -lwiringPi
+	$(CC) $(CFLAGS) pwm_fan_control.c circular_buffer.c -o pwm_fan_control -lwiringPi -lm
 
 power_control: power_control.c
 	$(CC) $(CFLAGS) power_control.c -o power_control -lwiringPi
