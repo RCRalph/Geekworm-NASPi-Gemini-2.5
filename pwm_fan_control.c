@@ -9,7 +9,11 @@
 
 #define PWM_PIN 1
 #define PWM_RANGE 1024
+#define PWM_MIN (PWM_RANGE / 4)
 #define PWM_MAX (PWM_RANGE - 1)
+
+#define TEMP_MIN 50
+#define TEMP_MAX 60
 
 static volatile sig_atomic_t keepRunning = 1;
 
@@ -51,15 +55,17 @@ float getCPUTemperature() {
 int getFanSpeed(struct CircularBuffer* temperatureBuffer) {
     float maxTemperature = circularBufferMax(temperatureBuffer);
 
-    if (isnan(maxTemperature) || maxTemperature > 70) {
-        return PWM_MAX;
-    } else if (maxTemperature > 65) {
-        return PWM_RANGE * 3 / 4;
-    } else if (maxTemperature > 60) {
-        return PWM_RANGE / 2;
-    } else {
-        return PWM_RANGE / 3;
+    if (isnan(maxTemperature)) return PWM_MAX;
+
+    if (maxTemperature < TEMP_MIN) {
+        maxTemperature = TEMP_MIN;
+    } else if (maxTemperature > TEMP_MAX) {
+        maxTemperature = TEMP_MAX;
     }
+
+    float fanPercentage = (maxTemperature - TEMP_MIN) / (TEMP_MAX - TEMP_MIN);
+
+    return lround(PWM_MIN + fanPercentage * (PWM_MAX - PWM_MIN));
 }
 
 int main(void) {
@@ -86,11 +92,11 @@ int main(void) {
         newFanSpeed = getFanSpeed(&temperatureBuffer);
 
         if (lastFanSpeed != newFanSpeed) {
-            printf(
+            fprintf(
+                stderr,
                 "Changing fan speed to %d%% (last max temperature: %.1f°C)\n",
                 (newFanSpeed * 100) / PWM_MAX,
                 temperature);
-            fflush(stdout);
 
             pwmWrite(PWM_PIN, newFanSpeed);
             lastFanSpeed = newFanSpeed;

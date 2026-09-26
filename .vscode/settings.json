@@ -1,6 +1,8 @@
 {
     "cSpell.words": [
+        "DSLEEP",
         "GEEKWORM",
+        "lwiring",
         "wiringpi"
     ],
     "C_Cpp.default.compilerPath": "/usr/bin/arm-linux-gnueabihf-gcc",
